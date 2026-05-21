@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Building an Image Factory"
-tags: automation aws packer
+tags: automation aws packer infra
 ---
 
-Sorry I've been quiet lately. My head has been down on my newest adventure into a new challenge. I'm so used to being the sole operator, platform engineer, SRE, or whatever that day brings that it's odd to take a step back and be tasked with providing enterprise cybersecurity for cloud environments that other teams are operating. I've had so many cool new projects that will make for some great technical blogs, so I figured I would start with this one. The idea is simple: how do you provide your organization with hardened operating systems that teams can actually deploy into the cloud? A lot of compliance terms and frameworks get tossed around, but the vision is this: how do you provide an image factory of CIS-hardened AMIs, bake in a custom baseline of tools, and share those images across numerous AWS accounts and organizations?
+Sorry I've been quiet lately. My head has been down on my newest adventure. I'm so used to being the sole operator, platform engineer, SRE, or whatever that day brings that it's odd to take a step back and be tasked with providing enterprise cybersecurity for cloud environments that other teams are operating. I've had so many cool new projects that will make for some great technical blogs, so I figured I would start with this one. The idea is simple: how do you provide your organization with hardened operating systems that teams can actually deploy into the cloud? A lot of compliance terms and frameworks get tossed around, but the vision is this: how do you provide an image factory of CIS-hardened AMIs, bake in a custom baseline of tools, and share those images across numerous AWS accounts and organizations?
 
 Here is my approach, the downfalls, the unknowns, and the fun parts. I apologize in advance that this is very GitLab centric CI/CD, but if you like the design, feel free to port it over to your source control system of choice.
 
@@ -53,21 +53,24 @@ repos:
 
 That runs on every commit and removes a lot of pointless review noise. If Packer formatting or shell linting is broken, I want the hook to catch it before a reviewer has to.
 
+> Side note, I typically have a dedicated `pre-commit` CI job for making sure everything passes as a prerequisite to other pipelines.
+
 The repo also has a `docs` directory for the usual odds and ends: architecture notes, decision records, and diagrams.
 
 ## AWS Prerequisites
 
 Before the repo can build anything useful, AWS needs a few pieces in place. If the AMIs use encrypted EBS volumes, the KMS key policy has to let the build account use the key and let consumer accounts launch from the shared AMIs. You also need the normal network plumbing: VPC, subnets, routing, security groups, and outbound access so temporary build and test instances can pull updates, download packages, reach SSM, and install whatever baseline tooling your organization requires.
 
-An optional AMI reaper Lambda is worth adding early. Failed builds, superseded images, and half-finished experiments should not live forever. If the pipeline tags images during build, test, and publish, cleanup can be driven from those tags instead of guesswork.
+An optional AMI reaper Lambda is worth adding early. Failed builds, superseded images, and half-finished experiments shouldn't live forever. If the pipeline tags images during build, test, and publish, cleanup can be driven from those tags instead of guessing (thank you boto3).
 
-The last prerequisite is identity. Packer, Terratest, and publishing should each have an IAM role, and CI should use OIDC to assume those roles. Long-lived AWS keys in CI variables are one of those things that feel convenient right up until they become an incident.
+The last prerequisite is identity. Packer, Terratest, and publishing should each have an IAM role, and CI should use OIDC to assume those roles. Long-lived AWS keys in CI variables are one of those things that feel convenient right up until they become an incident, and they make me feel like I need a shower if I have to use them.
 
 ## Codebase Structure
 
 The layout is intentionally boring. Each image gets its own Packer root under `packer/images/<provider>/<image>`, and each root owns the same four files: `versions.pkr.hcl`, `variables.pkr.hcl`, `sources.pkr.hcl`, and `build.pkr.hcl`. When someone adds another operating system, the plugin versions, inputs, AMI lookup logic, and hardening steps all have a known place to live.
 
 ```console
+├── account-map.yaml
 ├── Brewfile
 ├── docs
 ├── Makefile

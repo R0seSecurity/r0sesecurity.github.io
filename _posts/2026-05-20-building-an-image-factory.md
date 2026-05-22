@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Building an Image Factory"
+title:  "Building an AWS Image Factory with Packer and Terratest"
 tags: automation aws packer infra
 ---
 

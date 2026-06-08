@@ -12,7 +12,7 @@ I've seen this scenario _a lot_, so I took a crack at a solution. Testing Infras
 
 ## Building the TerraStack
 
-I built yet another Go package to eliminate some pains of testing Infrastructure as Code (IaC). When you don't have a dedicated test account, can't predict how your configurations will hold up when they actually hit the API, and want to have a consolidated way to test locally and in CI/CD pipelines, this helper library can help. The [go-localstack](https://github.com/RoseSecurity/go-localstack) package combines the power of LocalStack (a fully functional local AWS cloud stack) with Terratest's battle-tested testing framework. I jokingly call this duo the TerraStack (please don't sue me, company that _builds geospatial products that enable smarter land asset management and development_).
+I built yet another Go package to eliminate some pains of testing Infrastructure as Code (IaC). When you don't have a dedicated test account, can't predict how your configurations will hold up when they actually hit the API, and want to have a consolidated way to test locally and in CI/CD pipelines, this helper library can help. The [go-localstack](https://github.com/R0seSecurity/go-localstack) package combines the power of LocalStack (a fully functional local AWS cloud stack) with Terratest's battle-tested testing framework. I jokingly call this duo the TerraStack (please don't sue me, company that _builds geospatial products that enable smarter land asset management and development_).
 
 Any way, LocalStack spins up a containerized environment that mimics AWS services locally. No real resources, no surprise bills, no cleanup headaches. Your Terraform code thinks it's talking to real AWS, but it's actually hitting LocalStack's mock services running in Docker. This approach solves several pain points at once like fast feedback loops with tests running in seconds rather than minutes, CI/CD friendly integration since everything runs in containers, real API interactions unlike unit tests with mocks, and automatic cleanup when the container dies.
 
@@ -78,7 +78,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/RoseSecurity/go-localstack/localstack"
+	"github.com/R0seSecurity/go-localstack/localstack"
 	"github.com/docker/docker/client"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
@@ -241,4 +241,4 @@ TestS3BucketWithLocalStack 2025-08-15T12:19:39-04:00 logger.go:67: aws_s3_bucket
 --- PASS: TestS3BucketWithLocalStack (10.83s)
 ```
 
-I hope this gives you a solid foundation for testing your Terraform modules with the TerraStack. By leveraging LocalStack and Terratest, you can create fast, reliable tests that run locally or in CI/CD pipelines without the overhead of managing real AWS resources. This approach not only speeds up your development cycle but also gives you confidence that your IaC works as intended before it hits production. Happy testing! If you're interested in more of my work, check out my [GitHub](https://github.com/RoseSecurity).
+I hope this gives you a solid foundation for testing your Terraform modules with the TerraStack. By leveraging LocalStack and Terratest, you can create fast, reliable tests that run locally or in CI/CD pipelines without the overhead of managing real AWS resources. This approach not only speeds up your development cycle but also gives you confidence that your IaC works as intended before it hits production. Happy testing! If you're interested in more of my work, check out my [GitHub](https://github.com/R0seSecurity).

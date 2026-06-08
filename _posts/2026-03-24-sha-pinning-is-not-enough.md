@@ -104,4 +104,4 @@ Pin your SHAs. Then verify what they point to.
 
 *This is a follow-up to my earlier post on the [Trivy supply chain compromise]({{ site.baseurl }}/2026/03/20/typosquatting-trivy).*
 
-If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/RoseSecurity)!
+If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/R0seSecurity)!

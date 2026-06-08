@@ -310,4 +310,4 @@ Positive naming also makes security choices more explicit. Setting `encryption_e
 
 ---
 
-If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/RoseSecurity)!
+If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/R0seSecurity)!

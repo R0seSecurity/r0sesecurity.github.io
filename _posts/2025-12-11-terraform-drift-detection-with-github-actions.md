@@ -235,4 +235,4 @@ While this workflow provides solid drift detection, you may want to enhance it f
 
 ---
 
-If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/RoseSecurity)!
+If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/R0seSecurity)!

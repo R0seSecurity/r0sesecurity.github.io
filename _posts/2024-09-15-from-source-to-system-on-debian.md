@@ -73,7 +73,7 @@ I added a few more arguments for a comprehensive package, settling on the follow
 fpm -s dir -t deb -n terramaid -v 1.12.0 \
 --description "A utility for generating Mermaid diagrams from Terraform configurations" \
 --license "Apache 2.0" --maintainer "rosesecurityresearch@proton.me" \
---url "https://github.com/RoseSecurity/Terramaid" --vendor "RoseSecurity" \
+--url "https://github.com/R0seSecurity/Terramaid" --vendor "RoseSecurity" \
 -a <ARCH> ./terramaid=/usr/local/bin/terramaid
 ```
 
@@ -233,5 +233,5 @@ jobs:
           file: ${{ env.AMD_PACKAGE }}
 ```
 
-I hope this was informative for anyone looking to develop and distribute a tool to Debian systems. If you're interested in my work and would like to see more, feel free to check out my [GitHub](https://github.com/RoseSecurity) or reach out on my [LinkedIn](https://www.linkedin.com/in/rosesecurity/). I love empowering engineers to build cool things, so never hesitate to reach out with questions or thoughts. Let's build some stuff!
+I hope this was informative for anyone looking to develop and distribute a tool to Debian systems. If you're interested in my work and would like to see more, feel free to check out my [GitHub](https://github.com/R0seSecurity) or reach out on my [LinkedIn](https://www.linkedin.com/in/rosesecurity/). I love empowering engineers to build cool things, so never hesitate to reach out with questions or thoughts. Let's build some stuff!
 

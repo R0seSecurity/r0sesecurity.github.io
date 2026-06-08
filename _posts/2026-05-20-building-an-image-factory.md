@@ -559,4 +559,4 @@ That's the real goal: turn "please use the hardened image" from a slide deck req
 
 ---
 
-If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/RoseSecurity)!
+If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/R0seSecurity)!

@@ -264,4 +264,4 @@ Choose boring technology. Keep it simple. Focus on business velocity over code e
 
 ---
 
-If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/RoseSecurity)!
+If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/R0seSecurity)!

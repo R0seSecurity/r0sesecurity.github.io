@@ -105,4 +105,4 @@ The developer did nothing wrong. They ran a standard tool from a major vendor an
 
 *This is the third post in a series on software supply chain attacks. The previous posts covered the [Trivy ecosystem compromise]({{ site.baseurl }}/2026/03/20/typosquatting-trivy) and [the limits of SHA pinning]({{ site.baseurl }}/2026/03/24/sha-pinning-is-not-enough). Joe Desimone's [technical analysis](https://gist.github.com/joe-desimone/36061dabd2bc2513705e0d083a9673e7) of the axios compromise is worth reading in full.*
 
-If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/RoseSecurity)!
+If you liked (or hated) this blog, feel free to check out my [GitHub](https://github.com/R0seSecurity)!

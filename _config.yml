@@ -39,9 +39,6 @@ dash:
   # generate social links in footer
   # supported colors: green, red, orange, blue, cyan, pink, teal, yellow, indigo, purple
   social_links:
-  - url: https://stackoverflow.com/users/22638505
-    icon: stack-overflow
-    color: orange
   - url: https://github.com/R0seSecurity
     icon: github-square
     color: purple
